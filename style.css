@@ -1,0 +1,95 @@
+/* Add a some left and rigt margin in wide screes (i.e. desktop) because I feel
+    that looks better */
+@media (min-width: 576px) {
+  body {
+    margin: 0.5em 20% 0.5em 20%;
+  }
+}
+
+/* Add a little margin to smaller screens because that still looks a little better */
+@media (max-width: 575px) {
+  body {
+    margin: 0.5em 1em 0.5em 1em;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+#header {
+  width: 75%;
+}
+
+#preferences {
+  width: 25%;
+}
+
+.preference-btn {
+  margin: 0.1rem;
+}
+
+#units-btn {
+  font-size: 1.25rem;
+}
+
+#location-buttons,
+#search-form {
+  clear: both;
+}
+
+#weather-icon {
+  font-size: 5rem;
+}
+
+#weather-description {
+  font-size: 1rem;
+}
+
+#weather-temperature-c,
+#weather-temperature-f {
+  font-size: 4rem;
+}
+
+#quality-level {
+  text-align: center;
+  font-size: 2rem;
+}
+
+#quality-description {
+  font-size: 1rem;
+}
+
+.forecast-icon {
+  font-size: 1.4rem;
+}
+
+.aq-0 {
+  background-color: #bdffbd;
+  color: #3b4351;
+}
+
+.aq-1 {
+  background-color: #cfff7e;
+  color: #3b4351;
+}
+
+.aq-2 {
+  background-color: #ffff3f;
+  color: #3b4351;
+}
+
+.aq-3 {
+  background-color: #ffa500;
+  color: #ffffff;
+}
+
+.aq-4 {
+  background-color: #af4300;
+  color: #ffffff;
+}
+
+.aq-5 {
+  background-color: #5f0000;
+  color: #ffffff;
+}
