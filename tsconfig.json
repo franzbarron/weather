@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "outDir": "app/src",
+    "removeComments": true,
+    "target": "ES2015",
+    "watch": true,
+    "listEmittedFiles": true,
+    "listFiles": true,
+    "rootDir": "src/"
+  }
+}

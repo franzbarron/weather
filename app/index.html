@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/spectre.css/dist/spectre.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pagecdn.io/lib/weather-icons/2.0.10/css/weather-icons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Weather and Air Quality</title>
+  </head>
+  <body>
+    <div>
+      <div id="header" class="float-left">
+        <h1>Weather and Air Quality</h1>
+      </div>
+      <div id="preferences" class="float-right">
+        <button id="appearance-btn" class="btn preference-btn float-right">
+          <i id="appearance-icon" class="wi wi-night-clear"></i>
+        </button>
+        <button id="units-btn" class="btn preference-btn float-right">
+          <i id="units-icon" class="wi wi-fahrenheit"></i>
+        </button>
+      </div>
+    </div>
+    <div id="location-buttons" class="columns">
+      <div class="column">
+        <button id="current-location" class="btn btn-block">
+          <i class="icon icon-location"></i> Current Location
+        </button>
+      </div>
+      <div class="column">
+        <button id="search-location" class="btn btn-block">
+          <i class="icon icon-search"></i> Search Location
+        </button>
+      </div>
+    </div>
+    <form id="search-form" class="input-group hidden">
+      <input
+        type="search"
+        name="location-name"
+        id="location-name"
+        class="form-input"
+      />
+      <button type="submit" class="btn btn-success input-group-btn">
+        <i class="icon icon-check"></i>
+      </button>
+      <button type="reset" class="btn btn-error input-group-btn">
+        <i class="icon icon-cross"></i>
+      </button>
+    </form>
+    <div id="loading" class="loading loading-lg hidden"></div>
+    <div id="error" class="hidden">
+      <p id="error-message"></p>
+    </div>
+    <div id="location-data" class="hidden">
+      <h2 id="location"></h2>
+      <div id="current-weather" class="columns text-center">
+        <div class="column">
+          <i id="weather-icon"></i>
+          <p id="weather-description"></p>
+        </div>
+        <div class="column">
+          <p>
+            <span id="weather-temperature-c" class="temperature"></span
+            ><span id="weather-temperature-f" class="temperature hidden"></span>
+          </p>
+        </div>
+      </div>
+      <div id="air-quality">
+        <h3>Air Quality</h3>
+        <div id="quality-level"></div>
+        <div class="text-center">
+          <p id="quality-description"></p>
+        </div>
+      </div>
+      <div id="weather-forecast">
+        <h3>Forecast</h3>
+        <div id="forecast-day-0" class="columns">
+          <div class="column col-8">
+            <p>
+              <strong><span id="date-0"></span></strong>
+              <br />
+              <span id="description-0"></span>
+            </p>
+          </div>
+          <div class="column col-2">
+            <p class="text-center forecast-icon">
+              <i id="icon-0"></i>
+            </p>
+          </div>
+          <div class="column col-2">
+            <p class="text-right">
+              <span id="max-c-0" class="temperature"></span>
+              <span id="max-f-0" class="temperature hidden"></span>
+              <br />
+              <span id="min-c-0" class="temperature"></span>
+              <span id="min-f-0" class="temperature hidden"></span>
+            </p>
+          </div>
+        </div>
+        <div id="forecast-day-1" class="columns">
+          <div class="column col-8">
+            <p>
+              <strong><span id="date-1"></span></strong>
+              <br />
+              <span id="description-1"></span>
+            </p>
+          </div>
+          <div class="column col-2">
+            <p class="text-center forecast-icon">
+              <i id="icon-1"></i>
+            </p>
+          </div>
+          <div class="column col-2">
+            <p class="text-right">
+              <span id="max-c-1" class="temperature"></span>
+              <span id="max-f-1" class="temperature hidden"></span>
+              <br />
+              <span id="min-c-1" class="temperature"></span>
+              <span id="min-f-1" class="temperature hidden"></span>
+            </p>
+          </div>
+        </div>
+        <div id="forecast-day-2" class="columns">
+          <div class="column col-8">
+            <p>
+              <strong><span id="date-2"></span></strong>
+              <br />
+              <span id="description-2"></span>
+            </p>
+          </div>
+          <div class="column col-2">
+            <p class="text-center forecast-icon">
+              <i id="icon-2"></i>
+            </p>
+          </div>
+          <div class="column col-2">
+            <p class="text-right">
+              <span id="max-c-2" class="temperature"></span>
+              <span id="max-f-2" class="temperature hidden"></span>
+              <br />
+              <span id="min-c-2" class="temperature"></span>
+              <span id="min-f-2" class="temperature hidden"></span>
+            </p>
+          </div>
+        </div>
+        <div id="forecast-day-3" class="columns">
+          <div class="column col-8">
+            <p>
+              <strong><span id="date-3"></span></strong>
+              <br />
+              <span id="description-3"></span>
+            </p>
+          </div>
+          <div class="column col-2">
+            <p class="text-center forecast-icon">
+              <i id="icon-3"></i>
+            </p>
+          </div>
+          <div class="column col-2">
+            <p class="text-right">
+              <span id="max-c-3" class="temperature"></span>
+              <span id="max-f-3" class="temperature hidden"></span>
+              <br />
+              <span id="min-c-3" class="temperature"></span>
+              <span id="min-f-3" class="temperature hidden"></span>
+            </p>
+          </div>
+        </div>
+        <div id="forecast-day-4" class="columns">
+          <div class="column col-8">
+            <p>
+              <strong><span id="date-4"></span></strong>
+              <br />
+              <span id="description-4"></span>
+            </p>
+          </div>
+          <div class="column col-2">
+            <p class="text-center forecast-icon">
+              <i id="icon-4"></i>
+            </p>
+          </div>
+          <div class="column col-2">
+            <p class="text-right">
+              <span id="max-c-4" class="temperature"></span>
+              <span id="max-f-4" class="temperature hidden"></span>
+              <br />
+              <span id="min-c-4" class="temperature"></span>
+              <span id="min-f-4" class="temperature hidden"></span>
+            </p>
+          </div>
+        </div>
+        <div id="forecast-day-5" class="columns">
+          <div class="column col-8">
+            <p>
+              <strong><span id="date-5"></span></strong>
+              <br />
+              <span id="description-5"></span>
+            </p>
+          </div>
+          <div class="column col-2">
+            <p class="text-center forecast-icon">
+              <i id="icon-5"></i>
+            </p>
+          </div>
+          <div class="column col-2">
+            <p class="text-right">
+              <span id="max-c-5" class="temperature"></span>
+              <span id="max-f-5" class="temperature hidden"></span>
+              <br />
+              <span id="min-c-5" class="temperature"></span>
+              <span id="min-f-5" class="temperature hidden"></span>
+            </p>
+          </div>
+        </div>
+        <div id="forecast-day-6" class="columns">
+          <div class="column col-8">
+            <p>
+              <strong><span id="date-6"></span></strong>
+              <br />
+              <span id="description-6"></span>
+            </p>
+          </div>
+          <div class="column col-2">
+            <p class="text-center forecast-icon">
+              <i id="icon-6"></i>
+            </p>
+          </div>
+          <div class="column col-2">
+            <p class="text-right">
+              <span id="max-c-6" class="temperature"></span>
+              <span id="max-f-6" class="temperature hidden"></span>
+              <br />
+              <span id="min-c-6" class="temperature"></span>
+              <span id="min-f-6" class="temperature hidden"></span>
+            </p>
+          </div>
+        </div>
+        <div id="forecast-day-7" class="columns">
+          <div class="column col-8">
+            <p>
+              <strong><span id="date-7"></span></strong>
+              <br />
+              <span id="description-7"></span>
+            </p>
+          </div>
+          <div class="column col-2">
+            <p class="text-center forecast-icon">
+              <i id="icon-7"></i>
+            </p>
+          </div>
+          <div class="column col-2">
+            <p class="text-right">
+              <span id="max-c-7" class="temperature"></span>
+              <span id="max-f-7" class="temperature hidden"></span>
+              <br />
+              <span id="min-c-7" class="temperature"></span>
+              <span id="min-f-7" class="temperature hidden"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/main.js"></script>
+    <script src="src/airquality.js"></script>
+    <script src="src/appearance.js"></script>
+    <script src="src/interactions.js"></script>
+    <script src="src/weather.js"></script>
+  </body>
+</html>
