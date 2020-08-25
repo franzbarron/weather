@@ -39,7 +39,7 @@
 }
 
 #weather-icon {
-  font-size: 5rem;
+  font-size: 4.5rem;
 }
 
 #weather-description {
@@ -48,7 +48,7 @@
 
 #weather-temperature-c,
 #weather-temperature-f {
-  font-size: 4rem;
+  font-size: 3.5rem;
 }
 
 #quality-level {
