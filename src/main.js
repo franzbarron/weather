@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 let iconsList;
 let units = 'metric';
-const baseURL = 'https://weather-air-quality-app.herokuapp.com/';
+const baseURL = 'https://weather-air-quality-app.herokuapp.com';
 fetch(baseURL).then(() => {
     console.log('Server awake');
 });
