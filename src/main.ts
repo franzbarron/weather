@@ -2,6 +2,7 @@ let iconsList: JSON;
 let units = 'metric';
 
 // URL to where API calls are made.
+// const baseURL = 'https://weather-air-quality-app.herokuapp.com';
 const baseURL = 'http://localhost:8080';
 
 // If you host the server on a service like Heroku or Glitch, it might be a good
