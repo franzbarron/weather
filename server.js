@@ -35,8 +35,9 @@ server.get('/geocode/:lat,:lng', async (req, res) => {
 server.get('/geocode/:name', async (req, res) => {
   const { name } = req.params;
 
+  encodedName = encodeURIComponent(name);
   const geocodeData = await fetch(
-    `https://api.opencagedata.com/geocode/v1/json?q=${name}&key=${process.env.OPENCAGE}`
+    `https://api.opencagedata.com/geocode/v1/json?q=${encodedName}&key=${process.env.OPENCAGE}`
   )
     .then((data) => data.json())
     .catch((err) => {
