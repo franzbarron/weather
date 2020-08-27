@@ -26,6 +26,7 @@ async function getAirQuality(latitude: number, longitude: number) {
 function showAirQuality(data) {
   showQualityLevel(data.data.aqi);
   showQualityDescription(data.data.aqi);
+  showAttributions(data.data.attributions);
 }
 
 function showQualityLevel(index: number) {
@@ -92,4 +93,27 @@ function invalidStation() {
   document.querySelector(
     '#quality-description'
   ).textContent = `It seems like there's no information for this location's air quality`;
+
+  document.querySelector('#air-quality-source').classList.add('hidden');
+}
+
+function showAttributions(attributions) {
+  document.querySelector('#air-quality-source').classList.remove('hidden');
+
+  const attributionsListElt = document.querySelector('#attributions-list');
+  attributionsListElt.textContent = '';
+  const length = attributions.length;
+  for (let i = 0; i < length; i++) {
+    // console.log(attribution);
+    const link = document.createElement('a');
+    link.setAttribute('href', attributions[i].url);
+
+    if (i === length - 1 && i !== 0) attributionsListElt.innerHTML += 'and ';
+
+    link.innerHTML = attributions[i].name;
+    attributionsListElt.appendChild(link);
+
+    if (i !== length - 1 && length > 2) attributionsListElt.innerHTML += ', ';
+    else attributionsListElt.innerHTML += ' ';
+  }
 }
