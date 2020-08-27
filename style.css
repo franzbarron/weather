@@ -57,11 +57,11 @@
 }
 
 #quality-description {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .forecast-icon {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 
 .aq-0 {
@@ -92,4 +92,12 @@
 .aq-5 {
   background-color: #5f0000;
   color: #ffffff;
+}
+
+strong {
+  font-size: 0.7rem;
+}
+
+#attributions {
+  font-size: small;
 }

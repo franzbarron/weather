@@ -66,7 +66,9 @@
       <h2 id="location"></h2>
       <div id="current-weather" class="columns text-center">
         <div class="column">
-          <i id="weather-icon"></i>
+          <p>
+            <i id="weather-icon"></i>
+          </p>
           <p id="weather-description"></p>
         </div>
         <div class="column">
@@ -269,6 +271,15 @@
             </p>
           </div>
         </div>
+      </div>
+      <div id="attributions">
+        <p id="weather-source">
+          Weather data provided by
+          <a href="https://openweathermap.org/">OpenWeatherMap</a>.
+        </p>
+        <p id="air-quality-source">
+          Air quality data provided by <span id="attributions-list"></span>
+        </p>
       </div>
     </div>
     <script src="src/main.js"></script>
