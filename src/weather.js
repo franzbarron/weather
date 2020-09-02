@@ -88,7 +88,6 @@ function showDate(date, timezone, day) {
     const dateElt = document.querySelector(`#date-${day}`);
     const options = {
         weekday: 'long',
-        year: 'numeric',
         month: 'long',
         day: 'numeric',
         timeZone: timezone

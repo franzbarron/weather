@@ -25,6 +25,8 @@ function gotPosition(position) {
             console.error(`An error ocurred: ${err}`);
             if (err.message === 'Failed to fetch')
                 showError(`There was a problem connecting to the web.`);
+            else if (err.message === 'NetworkError when attempting to fetch resource.')
+                showError('There was a problem on our part. We are working to fix it.');
             return;
         });
         const parsedLocation = parseLocation(locationData.results[0].components);
