@@ -34,6 +34,7 @@ document
 
 document.querySelector('#search-form').addEventListener('reset', (e: Event) => {
   toggleLocationButtons();
+  (document.querySelector('#location-name') as HTMLInputElement).blur();
   (document.querySelector('#location-name') as HTMLInputElement).value = '';
 });
 

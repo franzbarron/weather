@@ -22,6 +22,7 @@ document
 });
 document.querySelector('#search-form').addEventListener('reset', (e) => {
     toggleLocationButtons();
+    document.querySelector('#location-name').blur();
     document.querySelector('#location-name').value = '';
 });
 document
