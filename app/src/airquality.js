@@ -8,12 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 function getAirQuality(latitude, longitude) {
+    var _a, _b;
     return __awaiter(this, void 0, void 0, function* () {
         const airQualityData = yield fetch(`${baseURL}/air-quality/${latitude},${longitude}`)
             .then((data) => data.json())
             .catch((e) => console.error(`An error ocurred: ${e.message}`));
-        const stationCoords = airQualityData.data.city.geo;
-        if (calculateDistance(latitude, longitude, stationCoords[0], stationCoords[1]) <= 10)
+        const stationCoords = (_b = (_a = airQualityData === null || airQualityData === void 0 ? void 0 : airQualityData.data) === null || _a === void 0 ? void 0 : _a.city) === null || _b === void 0 ? void 0 : _b.geo;
+        if (stationCoords &&
+            calculateDistance(latitude, longitude, stationCoords[0], stationCoords[1]) <= 10)
             showAirQuality(airQualityData);
         else
             invalidStation();

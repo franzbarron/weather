@@ -5,13 +5,14 @@ async function getAirQuality(latitude: number, longitude: number) {
     .then((data) => data.json())
     .catch((e: Error) => console.error(`An error ocurred: ${e.message}`));
 
-  const stationCoords = airQualityData.data.city.geo;
+  const stationCoords = airQualityData?.data?.city?.geo;
 
   // The air quality API will always return the closest monitoring station
   // regardless of how near or far away it is from the desired location.
   // A distance of 10 km was chosen because it seems reasonable. If the station
   // is farther away than this distance, its data is discarded.
   if (
+    stationCoords &&
     calculateDistance(
       latitude,
       longitude,
